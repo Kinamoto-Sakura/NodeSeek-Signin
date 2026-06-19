@@ -183,7 +183,7 @@ def session_login(user, password, solver_type, api_base_url, client_key):
 
     session = requests.Session(impersonate="chrome110")
     session.get("https://www.nodeseek.com/signIn.html")
-
+    # [改动1] 适配 NodeSeek 最新接口的 Strict Schema Validation：移除了原 payload 中的 token 与 source 字段
     data = {
         "username": user,
         "password": password
@@ -200,6 +200,7 @@ def session_login(user, password, solver_type, api_base_url, client_key):
         'referer': "https://www.nodeseek.com/signIn.html",
         'accept-language': "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
         'Content-Type': "application/json",
+        # [改动2] 将解算后的 Turnstile 验证码参数作为独立的键值对，迁移至 HTTP 标头中进行提交
         'x-captcha-source': "turnstile",
         'x-captcha-token': token
     }
