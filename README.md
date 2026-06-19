@@ -1,4 +1,5 @@
 ## 所有内容均Fork自[yowiv/NodeSeek-Signin](https://github.com/yowiv/NodeSeek-Signin)
+原作者已经删库，请不要在各论坛讨论此ns自动签到工具
 # NodeSeek-Signin
 
 <div align="center">
